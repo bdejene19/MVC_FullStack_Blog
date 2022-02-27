@@ -17,8 +17,16 @@ nav {
     font-size: 1.35rem;
     display: flex;
     flex-wrap: wrap;
+    color: white;
 }
 
+nav li:hover {
+    color: var(--primary-color);
+}
+
+nav, main, footer {
+    padding: 1em 1.5em;
+}
 nav > div,ul {
     flex: 1 1 20em;
 }
@@ -44,6 +52,43 @@ ul {
 nav li {
     cursor: pointer;
     flex: 1 1 5em;
+}
+
+section {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 2em;
+    column-gap: 3em;
+    /* align-items: center; */
+    /* justify-content: center; */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+
+
+}
+section a {
+    flex: 1 1 20em;
+    display: flex;
+    flex-direction: column;
+}
+
+
+a h2 {
+    background-color: var(--primary-color);
+}
+
+a article {
+    border-radius: 10px;
+    overflow: hidden;
+
+}
+a article > * {
+    padding: 1em;
+
+    width: 100%;
 }
 
 
