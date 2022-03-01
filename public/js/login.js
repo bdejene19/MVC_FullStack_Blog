@@ -14,7 +14,6 @@ const signUp = async (event) => {
     headers: { "Content-Type": "application/json" },
   });
   if (res.ok) {
-    console.log("hellooo");
   } else {
     alert("Failed to log in");
   }
@@ -27,7 +26,11 @@ const signIn = async (event) => {
   const username = document.getElementById("username");
   const pswd = document.getElementById("password");
 
-  let res = await fetch("/signIn");
+  let res = await fetch("/signIn", {
+    method: "POST",
+    body: JSON.stringify({ username, pswd }),
+    headers: { "Content-Type": "application/json" },
+  });
 };
 
 signin.addEventListener("click", signIn);
