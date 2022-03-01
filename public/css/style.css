@@ -1,97 +1,140 @@
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
 :root {
-    --primary-color: #ED6A5A;
-    --secondary-color: #5D576B;
-    --tertiary-color: #9BC1BC;
-    --general-bg: #F4F1BB;
+  --primary-color: #ed6a5a;
+  --secondary-color: #5d576b;
+  --tertiary-color: #9bc1bc;
+  --general-bg: #f4f1bb;
 }
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
 }
 
 nav {
-    background-color: var(--secondary-color);
-    padding: 1.25em;
-    width: 100vw;
-    font-size: 1.35rem;
-    display: flex;
-    flex-wrap: wrap;
-    color: white;
+  background-color: var(--secondary-color);
+  padding: 1.25em;
+  width: 100vw;
+  font-size: 1.35rem;
+  display: flex;
+  flex-wrap: wrap;
+  color: white;
 }
 
 nav li:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
-nav, main, footer {
-    padding: 1em 1.5em;
+nav,
+main,
+footer {
+  padding: 1em 1.5em;
 }
-nav > div,ul {
-    flex: 1 1 20em;
+nav > div,
+ul {
+  flex: 1 1 20em;
 }
 
 h1 {
-    background-color: var(--tertiary-color);
-    width: max-content;
-    border-radius: 10px;;
-    padding: 0.5em;
-    cursor: pointer;
-    box-shadow: 5px 5px 5px  white;
+  background-color: var(--tertiary-color);
+  width: max-content;
+  border-radius: 10px;
+  padding: 0.5em;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px white;
 }
 
 ul {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 nav li {
-    cursor: pointer;
-    flex: 1 1 5em;
+  cursor: pointer;
+  flex: 1 1 5em;
 }
 
 section {
-    display: flex;
-    flex-wrap: wrap;
-    row-gap: 2em;
-    column-gap: 3em;
-    /* align-items: center; */
-    /* justify-content: center; */
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 2em;
+  /* align-items: center; */
+  /* justify-content: center; */
+}
+
+.recent-posts {
+  column-gap: 3em;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
-
-
+  text-decoration: none;
+  color: inherit;
 }
 section a {
-    flex: 1 1 20em;
-    display: flex;
-    flex-direction: column;
+  flex: 1 1 20em;
+  display: flex;
+  flex-direction: column;
 }
 
-
 a h2 {
-    background-color: var(--primary-color);
+  background-color: var(--primary-color);
 }
 
 a article {
-    border-radius: 10px;
-    overflow: hidden;
-
+  border-radius: 10px;
+  overflow: hidden;
 }
 a article > * {
-    padding: 1em;
+  padding: 1em;
 
-    width: 100%;
+  width: 100%;
 }
 
+.login {
+  margin-top: 5em;
+  display: flex;
+  flex-wrap: wrap;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 0 5px 5px var(--secondary-color);
+  font-size: 1.35rem;
+}
 
+.login article {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+}
 
+.login article:first-of-type {
+  flex: 1 1 65%;
+  background-color: var(--primary-color);
+}
 
+.login article:last-of-type {
+  flex: 1 1 30%;
+  background-color: var(--tertiary-color);
+}
+.login form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1em;
+  padding: 1em;
+}
 
+.login form input,
+.login form button {
+  padding: 0.75em;
+  font-size: 1.25rem;
+  border-radius: 5px;
+}
+
+.login form button {
+  color: white;
+  background-color: var(--secondary-color);
+}

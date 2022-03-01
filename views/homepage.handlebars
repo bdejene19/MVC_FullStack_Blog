@@ -1,15 +1,14 @@
-{{!-- {{#each blog.post as |post| }} 
-    {{> blogpost}}
-        
-{{#each}} --}}
+    {{!-- {{#each blog.post as |post| }} 
+        {{> blogpost}}
+            
+    {{#each}} --}}
 
 <section class="recent-posts">
-                  <h2>Latest Posts</h2>
-
-            <a href="#">
-                <article>
-                    <h2>Blog title</h2>
-                    <p>beginning blog name</p>
-                </article>
-            </a>
-        </section>
+    <h2>Latest Posts</h2>
+    <a href="#">
+        <article>
+            <h2>{{title}}</h2>
+            <p>{{description}}</p>
+        </article>
+    </a>
+</section>
