@@ -1,41 +1,43 @@
 // require sequelize and destructure model and datatypes to create User Model
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
+const { Model, DataTypes } = require("sequelize");
+const sequelize = require("../config/connection");
 
 // create BlogPost model as Object
-class BlogPost extends Model {
+class BlogPost extends Model {}
 
-}
-
-BlogPost.init({
+BlogPost.init(
+  {
     id: {
-        type: DataTypes.INTEGER,
-        autoIncrement: true,
-        allowNull: false,
-        primaryKey: true,
+      type: DataTypes.INTEGER,
+      autoIncrement: true,
+      allowNull: false,
+      primaryKey: true,
     },
 
     title: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
 
     content: {
-        type: DataTypes.STRING,
-        allowNull: false,
+      type: DataTypes.STRING,
+      allowNull: false,
     },
 
-    post_id: {
-        references: {
-            model: 'user',
-            key: 'id',
-        }
-    }
-    
-}, {
+    user_id: {
+      references: {
+        model: "user",
+        key: "id",
+      },
+    },
+  },
+  {
     sequelize,
-    modelName: 'blog_post',
+    modelName: "blog_post",
     freezeTableName: true,
     timestamps: false,
     underscored: true,
-})
+  }
+);
+
+module.exports = BlogPost;
