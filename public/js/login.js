@@ -3,19 +3,33 @@ const signup = document.getElementById("sign-up");
 
 const signUp = async (event) => {
   event.preventDefault();
-  const name = document.getElementById("name");
-  const username = document.getElementById("new-user");
-  const pswd = document.getElementById("new-pswd");
-  console.log("fired");
+  const name = document.getElementById("name").value;
+  const username = document.getElementById("new-username").value;
+  const email = document.getElementById("email").value;
+  let pswd = document.getElementById("new-pswd");
+  const repeatPswd = document.getElementById("repeat-pswd");
 
-  let res = await fetch("/signUp", {
-    method: "POST",
-    body: JSON.stringify({ name, username, pswd }),
-    headers: { "Content-Type": "application/json" },
-  });
-  if (res.ok) {
+  console.log(email);
+  if (pswd.value === repeatPswd.value) {
+    pswd = pswd.value;
+    let res = await fetch("/signUp", {
+      method: "POST",
+      body: JSON.stringify({ name, username, pswd, email }),
+      headers: { "Content-Type": "application/json" },
+    });
+    if (res.ok) {
+    } else {
+      alert("Failed to log in");
+    }
   } else {
-    alert("Failed to log in");
+    pswd.style.border = "solid red 1.5px";
+    repeatPswd.style.border = "solid red 1.5px";
+    alert("Passwords do not match!");
+
+    setTimeout(() => {
+      pswd.style.border = "solid black 1px";
+      repeatPswd.style.border = "solid black 1px";
+    }, 2000);
   }
 };
 

@@ -96,7 +96,7 @@ a article > * {
 }
 
 .login {
-  margin-top: 5em;
+  margin: 2.5em 0;
   display: flex;
   flex-wrap: wrap;
   border-radius: 10px;
@@ -123,13 +123,13 @@ a article > * {
 .login form {
   display: flex;
   flex-direction: column;
-  row-gap: 1em;
+  row-gap: 0.5em;
   padding: 1em;
 }
 
 .login form input,
 .login form button {
-  padding: 0.75em;
+  padding: 0.5em;
   font-size: 1.25rem;
   border-radius: 5px;
 }
