@@ -1,0 +1,23 @@
+[ 
+    {
+        "title": "My First Tech Blog (bemmyboy)!",
+        "content": "once upon a time....",
+        "user_id": 1
+    }, {
+        "title": "First post nby big boy!",
+        "content": "Pokemon vs yuigiyo",
+        "user_id": 2
+
+    }, {
+        "title": "My First Tech Blog! - Bemnet D",
+        "content": "once upon a time....",
+        "user_id": 3
+
+    }, {
+        "title": "My Second Blog post for Bemnet D",
+        "content": "once upon a time....",
+        "user_id": 3
+
+    }
+
+]
