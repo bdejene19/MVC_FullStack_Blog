@@ -37,14 +37,31 @@ signup.addEventListener("click", signUp);
 
 const signIn = async (event) => {
   event.preventDefault();
-  const username = document.getElementById("username");
-  const pswd = document.getElementById("password");
+  let email = document.getElementById("signin-email");
+  let pswd = document.getElementById("password");
 
-  let res = await fetch("/signIn", {
-    method: "POST",
-    body: JSON.stringify({ username, pswd }),
-    headers: { "Content-Type": "application/json" },
-  });
+  if (email.value.trim() && pswd.value.trim()) {
+    email = email.value;
+    pswd = pswd.value;
+    let res = await fetch("/signIn", {
+      method: "POST",
+      body: JSON.stringify({ email, pswd }),
+      headers: { "Content-Type": "application/json" },
+    }).catch((err) => console.log(err));
+
+    if (res.ok) {
+      window.location.replace("/profile");
+    }
+  } else {
+    alert("Please fill in a name and password.");
+    email.style.border = "solid red 3.5px";
+    pswd.style.border = "solid red 3.5px";
+
+    setTimeout(() => {
+      pswd.style.border = "solid black 1px";
+      email.style.border = "solid black 1px";
+    }, 2000);
+  }
 };
 
 signin.addEventListener("click", signIn);
