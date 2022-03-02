@@ -1,14 +1,6 @@
-    {{!-- {{#each blog.post as |post| }} 
-        {{> blogpost}}
-            
-    {{#each}} --}}
-
-<section class="recent-posts">
-    <h2>Latest Posts</h2>
-    <a href="#">
-        <article>
-            <h2>{{title}}</h2>
-            <p>{{description}}</p>
-        </article>
-    </a>
-</section>
+<h1>Latest Posts</h1>
+<main id="all-posts">
+{{#each posts as |post| }} 
+    {{> blogpost}}
+{{/each}}
+</main>
