@@ -74,8 +74,17 @@ section {
 }
 .recent-posts {
   flex: 1 1 10em;
+  height: 50vh;
 }
 
+.recent-posts h2 {
+  height: 30%;
+  text-align: center;
+}
+
+.recent-posts p {
+  height: 25vh;
+}
 a {
   text-decoration: none;
   color: inherit;
@@ -93,8 +102,25 @@ a h2 {
 a article {
   /* border-radius: 10px; */
   overflow: hidden;
+  opacity: 0.75;
 }
-a article > * {
+
+a article:hover {
+  opacity: 1;
+  border-radius: 7px;
+  transition: 0.3s ease-in-out;
+  box-shadow: 0 5px 5px 5px var(--secondary-color);
+}
+
+a article p {
+  background-color: var(--general-bg);
+}
+
+a .recent-posts:hover {
+  border-radius: 10px;
+}
+
+a article a article > * {
   padding: 1em;
 
   width: 100%;
