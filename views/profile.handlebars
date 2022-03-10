@@ -1,17 +1,25 @@
+<head>
+    <title>News Feed</title>
+    <link rel="stylesheet" type="text/css" href="/css/profile.css" >
+
+</head>
 <section class="new-post-container">
-    <h2>hello</h2>
+    <h1>Welcome {{name}}</h1>
+    <h2>Tell the world about your coding journey!</h2>
     <form>  
         <label for="new-post">
             <h2>Create a blog post!</h2>
         </label>
         <textarea type="textarea" id="new-post"></textarea>
-        <button type="submit" id="create-post"></button>
+        <button type="submit" id="create-post">Create Post</button>
     </form>
 </section>
 
 <section class="old-posts-container">
-    <h1>Previous Posts</h1>
-    <article>
-
+    <h2>Previous Posts</h2>
+    <article id="profile-allPosts">
+        {{#each allPosts as |post| }} 
+            {{> blogpost}}
+        {{/each}}
     </article>
 </section>
