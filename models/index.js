@@ -7,7 +7,9 @@ User.hasMany(BlogPost, {
   onDelete: "CASCADE",
 });
 
-BlogPost.belongsTo(User, {});
+BlogPost.belongsTo(User, {
+  foreignKey: "user_id",
+});
 
 BlogPost.hasMany(Comment, {
   foreignKey: "post_id",
