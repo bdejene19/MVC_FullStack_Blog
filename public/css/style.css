@@ -74,7 +74,7 @@ section {
 }
 .recent-posts {
   flex: 1 1 10em;
-  height: 50vh;
+  /* height: 50vh; */
 }
 
 .recent-posts h2 {
@@ -116,7 +116,7 @@ a article p {
   background-color: var(--general-bg);
 }
 
-a .recent-posts:hover {
+.recent-posts:hover {
   border-radius: 10px;
 }
 
