@@ -9,7 +9,6 @@ const signUp = async (event) => {
   let pswd = document.getElementById("new-pswd");
   const repeatPswd = document.getElementById("repeat-pswd");
 
-  console.log(email);
   if (pswd.value === repeatPswd.value) {
     pswd = pswd.value;
     let res = await fetch("/signUp", {
@@ -18,6 +17,7 @@ const signUp = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (res.ok) {
+      window.location.replace("/profile");
     } else {
       alert("Failed to log in");
     }

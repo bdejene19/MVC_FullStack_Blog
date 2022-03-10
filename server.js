@@ -13,15 +13,11 @@ const app = express();
 // initialize server, handlebars and port number
 const PORT = process.env.PORT || 8000;
 
-// // initialize handlebars as our view engine through express middleware
-app.engine("handlebars", hbs.engine);
-app.set("view engine", "handlebars");
-
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const sess = {
   secret: "my secret",
   cookie: {
-    maxAge: 3600,
+    maxAge: 9000000,
     httpOnly: true,
     secure: false,
     sameSite: "strict",
@@ -34,6 +30,10 @@ const sess = {
 };
 
 app.use(session(sess));
+
+// // initialize handlebars as our view engine through express middleware
+app.engine("handlebars", hbs.engine);
+app.set("view engine", "handlebars");
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
