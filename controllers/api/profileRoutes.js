@@ -3,24 +3,46 @@ const handleDB = require("../../helpers/dbQueries");
 const profile = require("express").Router();
 
 profile.get("/", async (req, res) => {
-  let userPosts = [];
-  console.log("req session email: ", req.session.email);
+  let user = null;
   if (req.session.loggedIn) {
-    userPosts = await User.findOne({
+    user = await User.findOne({
       include: [{ model: BlogPost }],
       where: {
         email: req.session.email,
       },
     });
 
-    let name = userPosts.username;
-    let allPosts = await handleDB.getAllBlogPosts();
-    if (userPosts) {
-      res.render("profile", { loggedIn: req.session.loggedIn, name, allPosts });
+    let usersPosts = user.blog_posts;
+    usersPosts = usersPosts.map((post) => post.get({ plain: true }));
+    let name = user.username;
+    let userId = user.id;
+    let allPosts = usersPosts;
+    if (user) {
+      res.render("profile", {
+        loggedIn: req.session.loggedIn,
+        name,
+        allPosts,
+        userId,
+      });
     }
   } else {
     res.redirect("/login");
   }
 });
 
+profile.post("/createPost", (req, res) => {
+  console.log(req.body);
+  let { userID, title, blogContent } = req.body;
+  let newPost = BlogPost.create({
+    title: title,
+    content: blogContent,
+    user_id: userID,
+  }).catch((err) => res.status(500).json({ err }));
+
+  if (!newPost) {
+    res.status(404).json({ message: "new post request could not be executed" });
+    return;
+  }
+  res.status(200).json({ newPost });
+});
 module.exports = profile;

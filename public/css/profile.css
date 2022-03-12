@@ -1,29 +1,44 @@
-.new-post-container {
-  flex-direction: column;
+.new-post-container,
+form {
+  display: flex;
+  column-gap: 2em;
 }
 
-.new-post-container form {
+.new-post-container {
+  margin: 2em;
+  padding: 1em;
+  border: solid grey 2px;
+  border-radius: 5px;
+  justify-content: center;
+}
+
+form {
+  flex-direction: column;
   align-self: center;
   width: 50vw;
+  row-gap: 1.25em;
 }
 
-.new-post-container form h2 {
-  /* padding: 1em 0; */
-}
-
-.new-post-container form textarea {
-  width: 100%;
+textarea {
   height: 30vh;
   font-size: 1.25rem;
-  padding: 0.5em;
 }
 
+textarea,
+input,
+button {
+  padding: 1em;
+}
+
+button {
+  cursor: pointer;
+}
 .old-posts-container {
-  margin: 0 -1.5em;
+  margin: 0 -1.5em -1.5em;
   background-color: var(--tertiary-color);
   padding: 1.5em;
-  border: solid green 3px;
   display: flex;
+  flex-direction: column;
 }
 
 #profile-allPosts {
@@ -34,9 +49,9 @@
 }
 
 #profile-allPosts .recent-posts:first-of-type {
-  flex: 1 1 100%;
+  /* flex: 1 1 100%; */
 }
 #profile-allPosts .recent-posts {
-  flex: 1 1 25em;
+  flex: 1 1 20;
   height: 50vh;
 }

@@ -1,0 +1,16 @@
+h2 {
+  background-color: none;
+}
+section div,
+.post-content,
+.post-comments,
+form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1.5em;
+}
+
+textarea,
+button {
+  padding: 0.5em;
+}
