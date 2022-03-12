@@ -37,12 +37,10 @@ ul {
 }
 
 h1 {
-  background-color: var(--tertiary-color);
+  /* background-color: var(--tertiary-color); */
   width: max-content;
   border-radius: 10px;
   padding: 0.5em;
-  cursor: pointer;
-  box-shadow: 3px 3px 3px white;
 }
 
 ul {
@@ -105,14 +103,12 @@ a h2 {
 a article {
   /* border-radius: 10px; */
   overflow: hidden;
-  opacity: 0.75;
   border-radius: 7px;
 
   box-shadow: 0 3px 3px 3px var(--secondary-color);
 }
 
 a article:hover {
-  opacity: 1;
   transform: translate(-0.75vw, -0.75vh);
   transition: 0.3s ease-in-out;
 }
@@ -128,4 +124,11 @@ a article p {
 a article a article > * {
   padding: 1em;
   width: 100%;
+}
+
+@media screen and (max-width: 650px) {
+  #all-posts .recent-posts {
+    flex: 1 1 20em;
+    max-width: 100%;
+  }
 }
