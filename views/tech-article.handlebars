@@ -6,18 +6,19 @@
     <div>
         {{>full-post-view}}
         <article class="post-comments">
-    <form>
-        <label for="new-comment">Leave a comment!</label>
-        <textarea class="new-comment"></textarea>
-        <button id="submit-comment">Submit</button>
-    </form>
-    <div class="all-post-comments">
-        <h2>Comments:</h2>
-        {{#each comments as |comment|}}
-            {{>post-comments}}
-        {{/each}}
+            <form>
+                <label for="new-comment">Leave a comment!</label>
+                <textarea class="new-comment"></textarea>
+                <button id="submit-comment">Submit</button>
+            </form>
+            <div class="all-post-comments">
+                <h2>Comments:</h2>
+                {{#each comments as |comment|}}
+                    {{>post-comments}}
+                {{/each}}
+            </div>
+        </article>
     </div>
-</article>
-    </div>
-
 </section>
+
+<script src="/js/fullArticle.js"></script>

@@ -1,4 +1,5 @@
-h2 {
+h1 {
+  font-size: 2rem;
   background-color: none;
 }
 
@@ -18,10 +19,18 @@ button {
   padding: 0.5em;
 }
 
+textarea {
+  height: 30%;
+}
+
+.post-content p {
+  font-size: 1.5rem;
+}
 .post-comments {
   display: flex;
   flex-wrap: wrap;
   column-gap: 3em;
+  row-gap: 2em;
 }
 .all-post-comments {
   flex: 1 1 55%;
@@ -35,4 +44,13 @@ button {
   border: solid lightgrey 1.5px;
   border-radius: 5px;
   box-shadow: 0 3px 3px 3px var(--secondary-color);
+}
+
+@media screen and (max-width: 650px) {
+  textarea {
+    height: 20vh;
+  }
+  .all-post-comments {
+    flex: 1 1 100%;
+  }
 }
