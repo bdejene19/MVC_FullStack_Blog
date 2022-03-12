@@ -2,6 +2,7 @@ const sequelize = require("../config/connection");
 const { User, BlogPost, Comment } = require("../models/index");
 const userData = require("./userSeeds.json");
 const blogpostData = require("./blogpostSeeds.json");
+const commentData = require("./commentSeeds.json");
 const seedDatabase = async () => {
   await sequelize.sync({ force: true });
 
@@ -11,6 +12,11 @@ const seedDatabase = async () => {
   }).catch((err) => console.log("user creation error"));
 
   await BlogPost.bulkCreate(blogpostData, {
+    individualHooks: true,
+    returning: true,
+  }).catch((err) => console.log("blog post seeding error"));
+
+  await Comment.bulkCreate(commentData, {
     individualHooks: true,
     returning: true,
   }).catch((err) => console.log("blog post seeding error"));

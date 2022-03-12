@@ -1,0 +1,38 @@
+[ 
+    {
+        "user": "Walter White",
+        "text": "Awesome post!",
+        "post_id": 1
+    }, {
+        "user": "Bemnet Dejene",
+        "text": "Good Job!",
+        "post_id": 2
+
+    }, {
+        "user": "Nadir Patel",
+        "text": "Wish it was longer so I could keep reading",
+        "post_id": 3
+
+    }, {
+        "user": "Ronald McCuddle",
+        "text": "If only you learned Sequelize earlier!",
+        "post_id": 3
+
+    },{
+        "user": "Blue Teletubby",
+        "text": "Redux is Better!",
+        "post_id": 4
+
+    },{
+        "user": "Jane Austin",
+        "text": "you just keep getting better!",
+        "post_id": 3
+
+    },{
+        "user": "Peter Parker",
+        "text": "Biggest Fan!",
+        "post_id": 1
+
+    }
+
+]
