@@ -3,14 +3,19 @@
     <link rel="stylesheet" type="text/css" href="/css/profile.css" >
 
 </head>
-<section class="new-post-container">
-    <h1>Welcome {{name}}</h1>
+<section class="new-post-container" id="{{userId}}">
+    <h1 style="flex-basis: 100%;">Welcome {{name}}</h1>
     <h2>Tell the world about your coding journey!</h2>
     <form>  
-        <label for="new-post">
-            <h2>Create a blog post!</h2>
+        <label for="post-title">
+            Title:
         </label>
-        <textarea type="textarea" id="new-post"></textarea>
+        <input type="text" id="title" placeholder="Intermediate React Guide"/>
+        <label for="new-post">
+            Create a blog post!
+        </label>
+        <textarea type="textarea" id="content"></textarea>
+
         <button type="submit" id="create-post">Create Post</button>
     </form>
 </section>
@@ -23,3 +28,5 @@
         {{/each}}
     </article>
 </section>
+
+<script src="/js/profile.js"></script>

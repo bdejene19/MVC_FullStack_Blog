@@ -46,11 +46,35 @@ const getBlogPostById = async (id) => {
 
   if (post) {
     post = post.get({ plain: true });
+    return post;
+  }
+};
+
+const createPost = async (userId, title, content) => {
+  let newPost = await BlogPost.create({
+    title: title,
+    content: content,
+    user_id: userId,
+  }).catch((err) => console.log(err));
+
+  if (newPost) {
+    newPost = newPost.get({ plain: true });
+    return newPost;
+  }
+};
+const getUsersBlogPosts = async (email) => {
+  let user = await findUserByEmail(email);
+  let posts = user.blog_posts;
+  if (posts) {
+    posts = posts.map((post) => post.get({ plain: true }));
+    return posts;
   }
 };
 module.exports = {
   getAllUsers,
-  getAllBlogPosts,
   findUserByEmail,
+  getUsersBlogPosts,
+  getAllBlogPosts,
   getBlogPostById,
+  createPost,
 };
