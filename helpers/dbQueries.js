@@ -15,6 +15,7 @@ const getAllUsers = async () => {
 const getAllBlogPosts = async () => {
   let allPosts = await BlogPost.findAll({
     include: [{ model: Comment }],
+    order: [["createdAt", "DESC"]],
   }).catch((err) => console.log(err));
 
   if (allPosts) {
@@ -70,6 +71,36 @@ const getUsersBlogPosts = async (email) => {
     return posts;
   }
 };
+
+const formatDate = (date) => {
+  if (date) {
+    let dateObj = new Date(date);
+    let day = dateObj.getDate();
+    let month = dateObj.getMonth() + 1;
+    let year = dateObj.getFullYear();
+
+    let output = `${day}/${month}/${year}`;
+    return output;
+  } else {
+    throw new Error("Date was not provided or could not be found");
+  }
+};
+
+const makeComment = async (postID, username, comment) => {
+  if (postID && username && comment) {
+    let newComment = await Comment.create({
+      user: username,
+      text: comment,
+      post_id: postID,
+    });
+    if (newComment) {
+      newComment = newComment.get({ plain: true });
+      return newComment;
+    } else {
+      throw new Error("Comment request could not be made");
+    }
+  }
+};
 module.exports = {
   getAllUsers,
   findUserByEmail,
@@ -77,4 +108,6 @@ module.exports = {
   getAllBlogPosts,
   getBlogPostById,
   createPost,
+  formatDate,
+  makeComment,
 };
