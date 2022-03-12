@@ -1,10 +1,13 @@
 h2 {
   background-color: none;
 }
+
 section div,
 .post-content,
-.post-comments,
+.all-post-comments,
+.single-comment,
 form {
+  flex: 1 1 20%;
   display: flex;
   flex-direction: column;
   row-gap: 1.5em;
@@ -13,4 +16,23 @@ form {
 textarea,
 button {
   padding: 0.5em;
+}
+
+.post-comments {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 3em;
+}
+.all-post-comments {
+  flex: 1 1 55%;
+  width: 100%;
+}
+
+.single-comment {
+  width: 100%;
+
+  padding: 0.5em;
+  border: solid lightgrey 1.5px;
+  border-radius: 5px;
+  box-shadow: 0 3px 3px 3px var(--secondary-color);
 }

@@ -1,19 +1,14 @@
 const { User, BlogPost } = require("../../models/index");
 const handleDB = require("../../helpers/dbQueries");
 const profile = require("express").Router();
-
+const { findUserByEmail, formatDate } = require("../../helpers/dbQueries");
 profile.get("/", async (req, res) => {
   let user = null;
   if (req.session.loggedIn) {
-    user = await User.findOne({
-      include: [{ model: BlogPost }],
-      where: {
-        email: req.session.email,
-      },
-    });
+    user = await findUserByEmail(req.session.email);
 
     let usersPosts = user.blog_posts;
-    usersPosts = usersPosts.map((post) => post.get({ plain: true }));
+    // usersPosts = usersPosts.map((post) => post.get({ plain: true }));
     let name = user.username;
     let userId = user.id;
     let allPosts = usersPosts;

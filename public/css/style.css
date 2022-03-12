@@ -69,9 +69,15 @@ section {
   display: flex;
   flex-wrap: wrap;
   column-gap: 3em;
+  row-gap: 2em;
 }
-.recent-posts {
-  flex: 1 1 10em;
+#all-posts .recent-posts:first-of-type {
+  flex-basis: 100%;
+  max-width: 100%;
+}
+#all-posts .recent-posts {
+  flex: 1 1 20em;
+  max-width: 50%;
 }
 
 .recent-posts h2 {
