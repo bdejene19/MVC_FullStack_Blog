@@ -48,12 +48,24 @@ button {
   column-gap: 2em;
 }
 
-#profile-allPosts .recent-posts:first-of-type {
-  /* flex: 1 1 100%; */
-}
 #profile-allPosts .recent-posts {
-  flex: 1 1 20;
+  flex: 1 1 20em;
   height: 50vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-posts div:last-of-type i {
+  display: none;
+}
+
+i {
+  cursor: pointer;
+}
+
+.recent-posts:hover div:last-of-type i {
+  display: block;
+  justify-self: baseline;
 }
 
 @media screen and (max-width: 650px) {

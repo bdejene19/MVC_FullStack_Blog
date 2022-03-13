@@ -1,10 +1,16 @@
     <a href="/posts/{{id}}" class="recent-posts" id="post-{{id}}">
         <article>
-            <h2>{{title}}</h2>
+            <div class="post-header">
+                <h2>{{title}}
+                <i class="fa-solid fa-pen-to-square" id="edit-btn"></i>
+
+                </h2>
+            </div>
             <div>
                 <p>{{createdAt}}</p>
                 <p>{{content}}</p>
+                <i class="fa fa-trash" id="delete-post-btn" data-post-id="{{id}}"></i>
+
             </div>
-           
         </article>
     </a>

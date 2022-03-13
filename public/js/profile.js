@@ -1,4 +1,6 @@
-let newPostBtn = document.getElementById("create-post");
+const newPostBtn = document.getElementById("create-post");
+const deleteBtn = document.getElementById("delete-post-btn");
+const editBtn = document.getElementById("delete-post-btn");
 
 const makeNewPost = async (e) => {
   e.preventDefault();
@@ -34,4 +36,26 @@ const makeNewPost = async (e) => {
   }
 };
 
+const deletePost = async () => {
+  let id = deleteBtn.dataset.postId;
+  let res = await fetch(`/profile/deletePost/${id}`, {
+    headers: {
+      "Content-type": "Application/json",
+    },
+    method: "DELETE",
+  });
+
+  if (res.ok) {
+    let deletion = await res.json();
+
+    if (deletion) {
+      window.location.replace("/profile");
+    }
+  }
+};
+
+const updatePost = (id) => {};
+
 newPostBtn.addEventListener("click", makeNewPost);
+
+deleteBtn.addEventListener("click", deletePost);

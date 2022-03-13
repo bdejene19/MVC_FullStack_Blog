@@ -84,7 +84,8 @@ section {
 }
 
 .recent-posts p {
-  height: 25vh;
+  padding: 1em;
+  /* height: 25vh; */
 }
 a {
   text-decoration: none;
@@ -104,7 +105,7 @@ a article {
   /* border-radius: 10px; */
   overflow: hidden;
   border-radius: 7px;
-
+  height: 50vh;
   box-shadow: 0 3px 3px 3px var(--secondary-color);
 }
 
@@ -113,10 +114,21 @@ a article:hover {
   transition: 0.3s ease-in-out;
 }
 
-a article p {
+a article div {
   background-color: var(--general-bg);
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
 }
 
+a article div:last-of-type {
+  height: 43vh;
+}
+article div i {
+  font-size: 2rem;
+  align-self: center;
+  justify-self: end baseline;
+}
 .recent-posts:hover {
   border-radius: 10px;
 }
@@ -126,6 +138,31 @@ a article a article > * {
   width: 100%;
 }
 
+button {
+  color: white;
+  background-color: var(--secondary-color);
+  font-weight: 600;
+}
+.recent-posts h2 {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+
+  /* justify-content: center; */
+  column-gap: 1.5em;
+  row-gap: 1em;
+  padding: 0.5em;
+  width: 100%;
+}
+.recent-posts h2 i {
+  flex: 1 1 10%;
+  text-align: right;
+  display: none;
+}
+
+.recent-posts:hover i {
+  display: block;
+}
 @media screen and (max-width: 650px) {
   #all-posts .recent-posts {
     flex: 1 1 20em;
