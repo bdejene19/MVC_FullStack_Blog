@@ -101,6 +101,41 @@ const makeComment = async (postID, username, comment) => {
     }
   }
 };
+
+const deletePostById = async (id) => {
+  const deletedPost = await BlogPost.destroy({
+    where: {
+      id: id,
+    },
+    cascade: true,
+  }).catch((err) => console.log(err));
+
+  if (deletedPost) {
+    return true;
+  } else {
+    return false;
+  }
+};
+
+const updatePostById = async (id, title, content) => {
+  let postUpdated = await BlogPost.update(
+    {
+      title: title,
+      content: content,
+    },
+    {
+      where: {
+        id: id,
+      },
+    }
+  ).catch((err) => console.log(err));
+
+  if (postUpdated) {
+    return true;
+  } else {
+    return false;
+  }
+};
 module.exports = {
   getAllUsers,
   findUserByEmail,
@@ -110,4 +145,6 @@ module.exports = {
   createPost,
   formatDate,
   makeComment,
+  deletePostById,
+  updatePostById,
 };
