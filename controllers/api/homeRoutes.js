@@ -10,6 +10,11 @@ home.get("/", async (req, res) => {
   // }).catch((err) => console.log(err));
 
   let posts = await handleDB.getAllBlogPosts();
+  posts = posts.map((post) => {
+    let tempPost = post;
+    tempPost.createdAt = handleDB.formatDate(post.createdAt);
+    return tempPost;
+  });
   let loggedIn = req.session.loggedIn;
   res.render("homepage", { posts, loggedIn });
 });
@@ -66,5 +71,9 @@ home.post("/signIn", async (req, res) => {
       res.redirect("/profile");
     });
   }
+});
+
+home.get("/edit", (req, res) => {
+  res.render("edit-post");
 });
 module.exports = home;

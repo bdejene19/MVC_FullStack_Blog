@@ -12,7 +12,12 @@ profile.get("/", async (req, res) => {
     user = await findUserByEmail(req.session.email);
 
     let usersPosts = user.blog_posts;
-    // usersPosts = usersPosts.map((post) => post.get({ plain: true }));
+
+    usersPosts = usersPosts.map((post) => {
+      let tempPost = post;
+      tempPost.createdAt = formatDate(post.createdAt);
+      return tempPost;
+    });
     let name = user.username;
     let userId = user.id;
     let allPosts = usersPosts;

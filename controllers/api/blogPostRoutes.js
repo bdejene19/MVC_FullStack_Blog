@@ -3,18 +3,25 @@ const {
   getBlogPostById,
   findUserByEmail,
   makeComment,
+  formatDate,
 } = require("../../helpers/dbQueries");
 postRouter.get("/:id", async (req, res) => {
   const techPost = await getBlogPostById(req.params.id);
-  const { id, title, content, createdAt, comments } = techPost;
+  const createdAt = formatDate(techPost.createdAt);
+  const { id, title, content, comments } = techPost;
   const loggedIn = req.session.loggedIn;
 
+  let formatComments = techPost.comments.map((comment) => {
+    let tempComment = comment;
+    tempComment.createdAt = formatDate(comment.createdAt);
+    return tempComment;
+  });
   res.render("tech-article", {
     id,
     title,
     content,
     createdAt,
-    comments,
+    formatComments,
     loggedIn,
   });
 });
