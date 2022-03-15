@@ -3,11 +3,11 @@
     <link href="/css/editPage.css" rel="stylesheet"/>
 </header>
 
-<section class="edit-post-container" id="{{userId}}">
+<section class="edit-post-container">
 
 
     <h1 style="flex-basis: 100%;">Edit post #{{id}}</i></h1>
-    <form data-post-id="{{id}}">  
+    <form id="{{id}}">  
         <label for="post-title">
             Title:
         </label>
@@ -20,3 +20,5 @@
         <button type="submit" id="edit-btn">Submit Edits</button>
     </form>
 </section>
+
+<script src="/js/edits.js"></script>

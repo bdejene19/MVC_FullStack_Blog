@@ -35,7 +35,6 @@ profile.get("/", async (req, res) => {
 });
 
 profile.post("/createPost", async (req, res) => {
-  console.log(req.body);
   let { userID, title, blogContent } = req.body;
   let newPost = await handleDB
     .createPost(userID, title, blogContent)
@@ -50,28 +49,24 @@ profile.post("/createPost", async (req, res) => {
 
 profile.put("/updatePost/:id", async (req, res) => {
   let id = req.params.id;
-  console.log("ran update request: ");
-  console.log("update-body: ", req.body);
 
-  // let { title, content } = req.body;
-  // if (id) {
-  //   let postUpdated = await updatePostById(id, title, content).catch((err) =>
-  //     res.status(500).json({ err })
-  //   );
+  let { title, content } = req.body;
+  if (id) {
+    let postUpdated = await updatePostById(id, title, content).catch((err) =>
+      res.status(500).json({ err })
+    );
 
-  //   if (!postUpdated) {
-  //     res.status(404).json({ err: "Put request could not be made" });
-  //     return;
-  //   }
+    if (!postUpdated) {
+      res.status(404).json({ err: "Put request could not be made" });
+      return;
+    }
 
-  //   res.status(200).json(postUpdated);
-  // }
+    res.status(200).json(postUpdated);
+  }
 });
 profile.delete("/deletePost/:id", async (req, res) => {
   const id = req.params.id;
-  console.log("hit");
   const postDelete = await handleDB.deletePostById(id);
-  console.log("MY DELETE: ", postDelete);
   if (postDelete) {
     res.status(200).json(postDelete);
   } else {

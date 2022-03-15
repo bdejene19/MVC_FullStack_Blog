@@ -1,12 +1,12 @@
 const editForm = document.querySelector("form");
-const postId = editForm.id;
 const titleEl = document.getElementById("title");
 const textEl = document.getElementById("content");
-console.log(postId);
 const handleEdits = async (event) => {
+  event.preventDefault();
   let titleVal = titleEl.value.trim();
   let textVal = textEl.value.trim();
   if (event.target.id === "edit-btn") {
+    console.log("hit");
     if (titleVal === "" || textVal === "") {
       titleEl.style.border = "solid red 1.5px";
       textEl.style.border = "solid red 1.5px";
@@ -16,6 +16,7 @@ const handleEdits = async (event) => {
         textEl.style.border = "solid black 1px";
       }, 2000);
     } else {
+      const postId = editForm.id;
       let submitUpdates = await fetch(`/profile/updatePost/${postId}`, {
         headers: {
           "Content-type": "application/json",
