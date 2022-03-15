@@ -36,26 +36,52 @@ const makeNewPost = async (e) => {
   }
 };
 
-const deletePost = async () => {
-  let id = deleteBtn.dataset.postId;
-  let res = await fetch(`/profile/deletePost/${id}`, {
-    headers: {
-      "Content-type": "Application/json",
-    },
-    method: "DELETE",
-  });
-
-  if (res.ok) {
-    let deletion = await res.json();
-
-    if (deletion) {
-      window.location.replace("/profile");
-    }
-  }
-};
-
 const updatePost = (id) => {};
 
 newPostBtn.addEventListener("click", makeNewPost);
 
-deleteBtn.addEventListener("click", deletePost);
+const handleBlogCard = async (event) => {
+  const target = event.target;
+  const cardContainer = target.closest(".recent-posts");
+  const postId = cardContainer.id;
+
+  if (target.id === "delete-post-btn") {
+    const confirmDelete = confirm(
+      "This is an irreversible action, are you sure you want to delete?"
+    );
+    if (confirmDelete === true) {
+      const deletePost = await fetch(`/profile/deletePost/${postId}`, {
+        headers: {
+          "Content-type": "Application/json",
+        },
+        method: "DELETE",
+      });
+
+      if (deletePost.ok) {
+        const successDelete = await deletePost.json();
+
+        if (successDelete) {
+          window.location.replace("/profile");
+        }
+      }
+    } else {
+      return;
+    }
+  } else if (target.id === "edit-btn") {
+    window.location.replace("/edit");
+
+    // const editPost = await fetch(`/profile/updatePost/${dataAttr}`);
+    // if (editPost.ok) {
+    //   const update = await editPost.json();
+    //   if (update) {
+    //   }
+    // }
+  } else {
+    window.location.replace(`/posts/${postId}`);
+  }
+};
+const blogCards = document.querySelectorAll(".recent-posts");
+
+blogCards.forEach((card) => {
+  card.addEventListener("click", handleBlogCard);
+});

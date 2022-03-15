@@ -12,7 +12,12 @@ profile.get("/", async (req, res) => {
     user = await findUserByEmail(req.session.email);
 
     let usersPosts = user.blog_posts;
-    // usersPosts = usersPosts.map((post) => post.get({ plain: true }));
+
+    usersPosts = usersPosts.map((post) => {
+      let tempPost = post;
+      tempPost.createdAt = formatDate(post.createdAt);
+      return tempPost;
+    });
     let name = user.username;
     let userId = user.id;
     let allPosts = usersPosts;
@@ -62,16 +67,11 @@ profile.put("/updatePost/:id", async (req, res) => {
 });
 profile.delete("/deletePost/:id", async (req, res) => {
   const id = req.params.id;
-
-  const postDelete = await BlogPost.destroy({
-    cascade: "CASCADE",
-    where: {
-      id: id,
-    },
-  }).catch((err) => res.status(500).json(err));
-
+  console.log("hit");
+  const postDelete = await handleDB.deletePostById(id);
+  console.log("MY DELETE: ", postDelete);
   if (postDelete) {
-    res.status(301).json(postDelete);
+    res.status(200).json(postDelete);
   } else {
     res.status(404).json({ err: "request could not be found" });
   }

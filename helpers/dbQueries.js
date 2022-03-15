@@ -107,7 +107,7 @@ const deletePostById = async (id) => {
     where: {
       id: id,
     },
-    cascade: true,
+    cascade: "CASCADE",
   }).catch((err) => console.log(err));
 
   if (deletedPost) {

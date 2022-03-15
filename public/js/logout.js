@@ -1,5 +1,4 @@
 const logoutBtn = document.getElementById("logout");
-console.log("ran");
 const logout = async () => {
   let logMeOut = await fetch("/logout", {
     method: "POST",
