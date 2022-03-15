@@ -73,7 +73,15 @@ home.post("/signIn", async (req, res) => {
   }
 });
 
-home.get("/edit", (req, res) => {
+home.get(`/edit/:id`, async (req, res) => {
+  let selectedPost = await handleDB.getBlogPostById(req.params.id);
+  if (selectedPost) {
+    const { id, title, content } = selectedPost;
+
+    if (title && content) {
+      res.status(201).render("edit-post", { id, title, content });
+    }
+  }
   res.render("edit-post");
 });
 module.exports = home;

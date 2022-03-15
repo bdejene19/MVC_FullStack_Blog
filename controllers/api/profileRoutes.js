@@ -50,20 +50,22 @@ profile.post("/createPost", async (req, res) => {
 
 profile.put("/updatePost/:id", async (req, res) => {
   let id = req.params.id;
+  console.log("ran update request: ");
+  console.log("update-body: ", req.body);
 
-  let { newTitle, newContent } = req.body;
-  if (id) {
-    let postUpdated = await updatePostById(id, newTitle, newContent).catch(
-      (err) => res.status(500).json({ err })
-    );
+  // let { title, content } = req.body;
+  // if (id) {
+  //   let postUpdated = await updatePostById(id, title, content).catch((err) =>
+  //     res.status(500).json({ err })
+  //   );
 
-    if (!postUpdated) {
-      res.status(404).json({ err: "Put request could not be made" });
-      return;
-    }
+  //   if (!postUpdated) {
+  //     res.status(404).json({ err: "Put request could not be made" });
+  //     return;
+  //   }
 
-    res.status(200).json(postUpdated);
-  }
+  //   res.status(200).json(postUpdated);
+  // }
 });
 profile.delete("/deletePost/:id", async (req, res) => {
   const id = req.params.id;

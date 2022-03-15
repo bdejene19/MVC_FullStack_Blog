@@ -6,17 +6,17 @@
 <section class="edit-post-container" id="{{userId}}">
 
 
-    <h1 style="flex-basis: 100%;">Edit post #{{postId}}</i></h1>
-    <form>  
+    <h1 style="flex-basis: 100%;">Edit post #{{id}}</i></h1>
+    <form data-post-id="{{id}}">  
         <label for="post-title">
             Title:
         </label>
-        <input type="text" id="title" placeholder="Intermediate React Guide" value="{{newTitle}}"/>
+        <input type="text" id="title" placeholder="Intermediate React Guide" value="{{title}}"/>
         <label for="new-post">
             Blog Body:
         </label>
-        <textarea type="textarea" id="content">{{oldContent}}</textarea>
+        <textarea type="textarea" id="content">{{content}}</textarea>
 
-        <button type="submit" id="create-post">Submit Edits</button>
+        <button type="submit" id="edit-btn">Submit Edits</button>
     </form>
 </section>
