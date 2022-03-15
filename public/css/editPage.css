@@ -1,0 +1,32 @@
+.edit-post-container,
+form {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  width: 100%;
+}
+h1 {
+  padding: 0;
+}
+form {
+  row-gap: 2em;
+}
+
+input {
+  font-size: 2rem;
+}
+textarea {
+  height: 60vh;
+  font-size: 1.3rem;
+}
+
+button {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+input,
+textarea,
+button {
+  padding: 0.5em;
+}
