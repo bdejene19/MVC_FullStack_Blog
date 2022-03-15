@@ -59,3 +59,39 @@ const updatePost = (id) => {};
 newPostBtn.addEventListener("click", makeNewPost);
 
 deleteBtn.addEventListener("click", deletePost);
+
+const blogCards = document.querySelectorAll(".recent-posts");
+
+const handleBlogCard = async (event) => {
+  console.log(event.target);
+  const target = event.target;
+  const dataAttr = target.dataset.postId;
+
+  if (target.id === "delete-post-btn") {
+    let deletePost = await fetch(`/profile/deletePost/${dataAttr}`, {
+      headers: {
+        "Content-type": "Application/json",
+      },
+      method: "DELETE",
+    });
+
+    if (deletePost.ok) {
+      const successDelete = await deletePost.json();
+
+      if (successDelete) {
+        // window.location.replace("/profile");
+      }
+    }
+  } else if (target.id === "edit-btn") {
+    const editPost = await fetch(`/profile/updatePost/${dataAttr}`);
+    if (editPost.ok) {
+      const update = await editPost.json();
+      if (update) {
+        // window.location.replace('/')
+      }
+    }
+  }
+};
+blogCards.forEach((card) => {
+  card.addEventListener("click", handleBlogCard);
+});
