@@ -35,7 +35,6 @@ profile.get("/", async (req, res) => {
 });
 
 profile.post("/createPost", async (req, res) => {
-  console.log(req.body);
   let { userID, title, blogContent } = req.body;
   let newPost = await handleDB
     .createPost(userID, title, blogContent)
@@ -51,10 +50,10 @@ profile.post("/createPost", async (req, res) => {
 profile.put("/updatePost/:id", async (req, res) => {
   let id = req.params.id;
 
-  let { newTitle, newContent } = req.body;
+  let { title, content } = req.body;
   if (id) {
-    let postUpdated = await updatePostById(id, newTitle, newContent).catch(
-      (err) => res.status(500).json({ err })
+    let postUpdated = await updatePostById(id, title, content).catch((err) =>
+      res.status(500).json({ err })
     );
 
     if (!postUpdated) {
@@ -67,9 +66,7 @@ profile.put("/updatePost/:id", async (req, res) => {
 });
 profile.delete("/deletePost/:id", async (req, res) => {
   const id = req.params.id;
-  console.log("hit");
   const postDelete = await handleDB.deletePostById(id);
-  console.log("MY DELETE: ", postDelete);
   if (postDelete) {
     res.status(200).json(postDelete);
   } else {

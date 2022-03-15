@@ -12,6 +12,7 @@ const submitComment = async (e) => {
         "Content-type": "Application/json",
       },
     });
+
     if (btnSubmit.ok) {
       let newComment = await btnSubmit.json();
 

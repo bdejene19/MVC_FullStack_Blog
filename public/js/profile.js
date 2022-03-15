@@ -68,14 +68,10 @@ const handleBlogCard = async (event) => {
       return;
     }
   } else if (target.id === "edit-btn") {
-    window.location.replace("/edit");
-
-    // const editPost = await fetch(`/profile/updatePost/${dataAttr}`);
-    // if (editPost.ok) {
-    //   const update = await editPost.json();
-    //   if (update) {
-    //   }
-    // }
+    const editPost = await fetch(`/edit/${postId}`);
+    if (editPost.ok) {
+      window.location.replace(`/edit/${postId}`);
+    }
   } else {
     window.location.replace(`/posts/${postId}`);
   }
