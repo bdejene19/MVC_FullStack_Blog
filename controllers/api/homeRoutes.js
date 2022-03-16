@@ -74,14 +74,28 @@ home.post("/signIn", async (req, res) => {
 });
 
 home.get(`/edit/:id`, async (req, res) => {
-  let selectedPost = await handleDB.getBlogPostById(req.params.id);
-  if (selectedPost) {
-    const { id, title, content } = selectedPost;
+  if (req.session.loggedIn) {
+    let selectedPost = await handleDB
+      .getBlogPostById(req.params.id)
+      .catch((err) => console.log(err));
+    console.log("z: ", selectedPost);
+    if (selectedPost) {
+      const { id, title, content } = selectedPost;
 
-    if (title && content) {
-      res.status(201).render("edit-post", { id, title, content });
+      if (title && content) {
+        res
+          .status(201)
+          .render("edit-post", {
+            loggedIn: req.session.loggedIn,
+            id,
+            title,
+            content,
+          });
+        return;
+      }
     }
+  } else {
+    res.redirect("/login");
   }
-  res.render("edit-post");
 });
 module.exports = home;
