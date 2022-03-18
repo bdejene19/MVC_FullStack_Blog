@@ -10,18 +10,18 @@ profile.get("/", async (req, res) => {
   let user = null;
   if (req.session.loggedIn) {
     user = await findUserByEmail(req.session.email);
-
-    let usersPosts = user.blog_posts;
-
-    usersPosts = usersPosts.map((post) => {
-      let tempPost = post;
-      tempPost.createdAt = formatDate(post.createdAt);
-      return tempPost;
-    });
-    let name = user.username;
-    let userId = user.id;
-    let allPosts = usersPosts;
     if (user) {
+      let usersPosts = user.blog_posts;
+
+      usersPosts = usersPosts.map((post) => {
+        let tempPost = post;
+        tempPost.createdAt = formatDate(post.createdAt);
+        return tempPost;
+      });
+      let name = user.username;
+      let userId = user.id;
+      let allPosts = usersPosts;
+
       res.render("profile", {
         loggedIn: req.session.loggedIn,
         name,
