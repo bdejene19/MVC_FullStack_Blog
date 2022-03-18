@@ -3,11 +3,10 @@ const titleEl = document.getElementById("title");
 const textEl = document.getElementById("content");
 const handleEdits = async (event) => {
   event.preventDefault();
-  let titleVal = titleEl.value.trim();
-  let textVal = textEl.value.trim();
+  let title = titleEl.value.trim();
+  let content = textEl.value.trim();
   if (event.target.id === "edit-btn") {
-    console.log("hit");
-    if (titleVal === "" || textVal === "") {
+    if (title === "" || content === "") {
       titleEl.style.border = "solid red 1.5px";
       textEl.style.border = "solid red 1.5px";
       alert("Both a title and content field need to be filled");
@@ -21,7 +20,7 @@ const handleEdits = async (event) => {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ textVal, titleVal }),
+        body: JSON.stringify({ content, title }),
         method: "PUT",
       });
 

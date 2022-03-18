@@ -2,12 +2,12 @@ const signin = document.getElementById("sign-in");
 const signup = document.getElementById("sign-up");
 
 const signUp = async (event) => {
-  event.preventDefault();
+  await event.preventDefault();
   const name = document.getElementById("name").value;
-  const username = document.getElementById("new-username").value;
+  const username = document.getElementById("newUsername").value;
   const email = document.getElementById("email").value;
-  let pswd = document.getElementById("new-pswd");
-  const repeatPswd = document.getElementById("repeat-pswd");
+  let pswd = document.getElementById("newPswd");
+  const repeatPswd = document.getElementById("repeatPswd");
 
   if (pswd.value === repeatPswd.value) {
     pswd = pswd.value;
@@ -17,9 +17,18 @@ const signUp = async (event) => {
       headers: { "Content-Type": "application/json" },
     });
     if (res.ok) {
-      window.location.replace("/profile");
+      let successNewUser = await res.json();
+      console.log("got past double await");
+      if (successNewUser) {
+        let news = await successNewUser;
+        if (news) {
+          window.location.replace("/profile");
+        }
+      } else {
+        alert("problem adding user");
+      }
     } else {
-      alert("Failed to log in");
+      alert("Failed to create user. Make sure email is valid.");
     }
   } else {
     pswd.style.border = "solid red 1.5px";
@@ -51,6 +60,8 @@ const signIn = async (event) => {
 
     if (res.ok) {
       window.location.replace("/profile");
+    } else {
+      alert("User does not exist or information is incorrect");
     }
   } else {
     alert("Please fill in a name and password.");

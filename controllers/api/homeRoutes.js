@@ -2,13 +2,6 @@ const home = require("express").Router();
 const { User, BlogPost } = require("../../models/index");
 const handleDB = require("../../helpers/dbQueries");
 home.get("/", async (req, res) => {
-  // let posts = [{title: 'hello', description: 'ayoo technology'}, {title: 'User The Champion', description: 'lord commander has returned'}, {title: 'The others', description: 'moon cake'}];
-  // posts = posts.map(item => item.get({plain: true}))
-
-  // let allBlogPosts = await BlogPost.findAll({
-  //   limit: 20,
-  // }).catch((err) => console.log(err));
-
   let posts = await handleDB.getAllBlogPosts();
   posts = posts.map((post) => {
     let tempPost = post;
@@ -41,17 +34,18 @@ home.post("/signUp", async (req, res) => {
     full_name: req.body.name,
     password: req.body.pswd,
   };
+  console.log("my new user: ", newUser);
   let createdUser = await User.create(newUser).catch((err) => console.log(err));
 
   if (!createdUser) {
-    res.status(400).json({ message: "Request could not be made" });
+    res.status(404).json({ message: "Request could not be made" });
     return;
   }
-  // req.session.save(() => {
-  //   req.session.logged_in = res.status(200).json(createdUser);
-  // });
-  res.status(200).json(createdUser);
-  console.log("success adding user from signup");
+  req.session.save(() => {
+    req.session.loggedIn = true;
+    req.session.email = newUser.email;
+    return res.status(201).redirect("/profile");
+  });
 });
 
 home.post("/signIn", async (req, res) => {
@@ -62,26 +56,44 @@ home.post("/signIn", async (req, res) => {
     },
   }).catch((err) => console.log(err));
 
-  let correctPswd = selectedUser.validPassword(req.body.pswd);
+  if (selectedUser) {
+    let correctPswd = selectedUser.validPassword(req.body.pswd);
 
-  if (correctPswd) {
-    req.session.save(() => {
-      req.session.loggedIn = true;
-      req.session.email = req.body.email;
-      res.redirect("/profile");
-    });
+    if (correctPswd) {
+      req.session.save(() => {
+        req.session.loggedIn = true;
+        req.session.email = req.body.email;
+        return res.redirect("/profile");
+      });
+    } else {
+      correctPswd.catch((err) => res.status(404).json(err));
+      return;
+    }
+  } else {
+    res.status(404).json({ err: "Sign in could not be completed" });
   }
 });
 
 home.get(`/edit/:id`, async (req, res) => {
-  let selectedPost = await handleDB.getBlogPostById(req.params.id);
-  if (selectedPost) {
-    const { id, title, content } = selectedPost;
+  if (req.session.loggedIn) {
+    let selectedPost = await handleDB
+      .getBlogPostById(req.params.id)
+      .catch((err) => console.log(err));
+    if (selectedPost) {
+      const { id, title, content } = selectedPost;
 
-    if (title && content) {
-      res.status(201).render("edit-post", { id, title, content });
+      if (title && content) {
+        res.status(201).render("edit-post", {
+          loggedIn: req.session.loggedIn,
+          id,
+          title,
+          content,
+        });
+        return;
+      }
     }
+  } else {
+    res.redirect("/login");
   }
-  res.render("edit-post");
 });
 module.exports = home;

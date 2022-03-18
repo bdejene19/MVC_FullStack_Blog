@@ -16,7 +16,7 @@ postRouter.get("/:id", async (req, res) => {
     tempComment.createdAt = formatDate(comment.createdAt);
     return tempComment;
   });
-  res.render("tech-article", {
+  return res.render("tech-article", {
     id,
     title,
     content,
@@ -28,13 +28,12 @@ postRouter.get("/:id", async (req, res) => {
 
 postRouter.post("/newComment", async (req, res) => {
   if (req.session.loggedIn) {
-    console.log("z", req.body);
     let user = await findUserByEmail(req.session.email).catch((err) =>
       console.log(err)
     );
+    const postID = req.body.postID;
 
     if (user) {
-      const postID = req.body.postID;
       const { username } = user;
       const commentText = req.body.comment;
       let commentCreated = await makeComment(
@@ -44,11 +43,11 @@ postRouter.post("/newComment", async (req, res) => {
       ).catch((err) => console.log(err));
 
       if (commentCreated) {
-        res.status(201).json({ commentCreated });
+        return res.status(201).json({ commentCreated });
       }
+    } else {
+      return res.status(404).redirect(`/posts/${postID}`);
     }
-  } else {
-    res.status(404).json({});
   }
 });
 

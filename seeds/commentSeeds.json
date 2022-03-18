@@ -19,8 +19,8 @@
         "post_id": 3
 
     },{
-        "user": "Blue Teletubby",
-        "text": "Redux is Better!",
+        "user": "Mikel Arteta",
+        "text": "I knew you could push on!",
         "post_id": 4
 
     },{
@@ -32,6 +32,11 @@
         "user": "Peter Parker",
         "text": "Biggest Fan!",
         "post_id": 1
+
+    }, {
+        "user": "Bemnet Dejene",
+        "text": "Keep your head up!",
+        "post_id": 4
 
     }
 
