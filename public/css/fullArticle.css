@@ -41,6 +41,10 @@ textarea {
   column-gap: 3em;
   row-gap: 2em;
 }
+
+.post-comments form {
+  height: 50vh;
+}
 .all-post-comments {
   flex: 1 1 55%;
   width: 100%;
