@@ -16,18 +16,23 @@
 
 ## Description
 
-Designed and implemented a full stack blog, built using MySQL2 as the database, Sequelize for object-relati-mapping (ORM), and express for routing. Server side rendering was implemented for the frontend, using handlebengine. The purpose of this app is to lity for Users who have accounts to make posts, as well as view full articles and leave comments - all persisted using MySQL2 models.
+Designed and implemented a full stack blog, built using MySQL2 as the database, Sequelize for object-relational-mapping (ORM), and express for routing. Server side rendering was implemented on the frontend, using handle bars templating engine. The purpose of this app is to allow Users who have accounts to make posts, as well as view full articles and leave comments - all persisted using MySQL2 models.
+
+Express-session has also been implemented to make the UX more enjoyable, preventing repetitive sign-ins, as well as bcrypt for user increased user security. Application was deployed using Heroku (may take a moment to load).
 
 ## Screenshots
+
 ### Home/Landing Page
+
 <img width="650" alt="Screen Shot 2022-03-18 at 6 51 09 PM" src="https://user-images.githubusercontent.com/67334768/159094652-54fc948f-9729-4a13-a0b7-e7174e6a30f6.png">
 
 ### Create Post - Logged-in
+
 <img width="650" alt="Screen Shot 2022-03-18 at 6 52 10 PM" src="https://user-images.githubusercontent.com/67334768/159094648-db367f49-1611-4d9f-9764-7bf0518359a1.png">
 
 ### Full Article with Comments
-<img width="650" alt="Screen Shot 2022-03-18 at 6 52 25 PM" src="https://user-images.githubusercontent.com/67334768/159094646-8a51f1d7-ca83-4cd7-af0c-ec7312d85ab5.png">
 
+<img width="650" alt="Screen Shot 2022-03-18 at 6 52 25 PM" src="https://user-images.githubusercontent.com/67334768/159094646-8a51f1d7-ca83-4cd7-af0c-ec7312d85ab5.png">
 
 ## Installation Instructions
 
