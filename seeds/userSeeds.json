@@ -1,20 +1,26 @@
 [
     {
-        "username": "bemmyboy",
+        "username": "wwBad",
         "email": "bemmyboy20@gmail.com",
-        "full_name": "Bemmy Dizzle",
+        "full_name": "Walter White",
         "password": "12345678"
 
     },  {
-        "username": "big boy",
+        "username": "iceCube",
         "email": "freedom@yahoo.ca",
-        "full_name": "Bemnet Dizzle",
+        "full_name": "Ice Cube",
         "password": "12345678"
 
     },  {
-        "username": "Bemnet D",
+        "username": "emileSmithRoweYourBoat",
         "email": "biggs@aol.com",
         "full_name": "Sandler Dizzle",
+        "password": "12345678"
+
+    }, {
+        "username": "Saka7",
+        "email": "saka7@aol.com",
+        "full_name": "Bukayo Saka",
         "password": "12345678"
 
     }

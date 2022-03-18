@@ -1,22 +1,26 @@
 [ 
     {
-        "title": "My First Tech Blog (bemmyboy)!",
-        "content": "once upon a time....",
+        "title": "Snake Valley, How it Changed",
+        "content": "Snake River Farms is the premier producer of American Wagyu steaks and roasts. This beef is coveted by award-winning chefs and served in top-rated restaurants throughout the world. Snake River Farms beef features a buttery texture, complex flavorus, subtle sweetness and a lingering finish.",
         "user_id": 1
     }, {
-        "title": "First post nby big boy!",
-        "content": "Pokemon vs yuigiyo",
+        "title": "Started in the tap and Now I'm Here",
+        "content": "By freezing water in a cooler, you force the water to freeze directionally: from the top down. This allows for the ice to form perfect crystals: crystal clear ice! All of the dissolved air and particles end up in the water beneath the ice block.",
+        "user_id": 3
+
+    }, {
+        "title": "The Call Up",
+        "content": "Arsenal midfielder Emile Smith Rowe has been added to Gareth Southgate's squad for the first time ahead of England's upcoming World Cup qualifiers against Albania and San Marino; Smith Rowe: 'It's definitely a dream come true. I didn't expect it'",
+        "user_id": 4
+
+    }, {
+        "title": "Super Saka",
+        "content": "The wonderkid is only the second player to score a goal against the Citizens in the opening 45 minutes of a Premier League encounter this term, and he has given us a great chance to not only lead going into the break, but potentially get a result here.",
         "user_id": 2
-
     }, {
-        "title": "My First Tech Blog! - Bemnet D",
-        "content": "once upon a time....",
-        "user_id": 3
-
-    }, {
-        "title": "My Second Blog post for Bemnet D",
-        "content": "once upon a time....",
-        "user_id": 3
+        "title": "When I missed",
+        "content": "Star Bukayo Saka can use 'scar' of Euro 2020 final penalty miss to push on, says Mikel Arteta. A rsenal boss Mikel Arteta believes Bukayo Saka will use the “scar” from his penalty miss in the final of Euro 2020 to drive him onto bigger and better things.",
+        "user_id": 2
 
     }
 
